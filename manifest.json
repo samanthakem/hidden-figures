@@ -3,6 +3,9 @@
         "name": "hidden-figures",
         "description": "This extension replaces racist terms in tech like blacklist, whitelist, master and slave by better terms.",
         "version": "1.0",
+        "permissions": [
+            "https://*.github.com/"
+        ],
         "content_scripts": [
             {
                 "matches": [

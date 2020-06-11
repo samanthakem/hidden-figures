@@ -1,19 +1,26 @@
-var elements = document.getElementsByTagName('*');
+let elements = document.getElementsByTagName('*');
 
-for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
-    for (var j = 0; j < element.childNodes.length; j++) {
-        var node = element.childNodes[j];
-        if (node.nodeType === 3) {
-            replaceContent(node);
+const data = {
+    "blacklist": "blocklist",
+    "whitelist": "safelist",
+    "master": "primary",
+    "slave": "secondary"
+}
+
+for (let i = 0; i < elements.length; i++) {
+    let element = elements[i];
+    for (let j = 0; j < element.childNodes.length; j++) {
+        let node = element.childNodes[j];
+        if (node.nodeType === 3) { // text type
+            replaceText(node);
         }
     }
 }
 
-function replaceContent (node) {
+function replaceText(node) {
     let value = node.nodeValue;
-    console.log(value);
-    value = value.replace(/Blacklist/gi, 'blocklist');
-    value = value.replace(/blacklist/gi, 'blocklist');
+    Object.keys(data).forEach((key) => {
+        value = value.replace(new RegExp(key, 'gi'), data[key]);
+    })
     node.nodeValue = value;
 }

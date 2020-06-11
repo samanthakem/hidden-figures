@@ -1,0 +1,20 @@
+{
+    "manifest_version": 2,
+        "name": "hidden-figures",
+        "description": "This extension replaces racist terms in tech like blacklist, whitelist, master and slave by better terms.",
+        "version": "1.0",
+        "browser_action": {
+            "default_popup": "popup.html"
+        },
+        "content_scripts": [
+            {
+                "matches": [
+                    "*://*/*"
+                ],
+                "js": [
+                    "content.js"
+                ],
+                "run_at": "document_end"
+            }
+        ]
+    }
